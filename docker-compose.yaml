@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  app:
+    build: 
+      context: .
+    image: ricksonthompson/order-manager:v2
+    env_file: .env
+    container_name: order-manager
+    ports:
+      - 8081:8081
+  
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: db
+    ports:
+      - 1433:1433
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: Strong@Password123
+    restart: always
+    

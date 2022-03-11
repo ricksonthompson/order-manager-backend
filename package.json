@@ -9,7 +9,7 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "typeorm migration:run && nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -20,7 +20,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migration:generate": "./node_modules/.bin/typeorm migration:generate -n",
-    "migration:run": "./node_modules/.bin/typeorm migration:run",
+    "migration:run": "typeorm migration:run",
     "migration:revert": "./node_modules/.bin/typeorm migration:revert"
   },
   "dependencies": {
