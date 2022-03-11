@@ -1,11 +1,6 @@
-import {
-  MigrationInterface,
-  QueryRunner,
-  Table,
-  TableForeignKey,
-} from 'typeorm';
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class CreateItems1646961796062 implements MigrationInterface {
+export class createItemTable1647014919503 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
@@ -39,15 +34,6 @@ export class CreateItems1646961796062 implements MigrationInterface {
             type: 'integer',
           },
         ],
-      }),
-    );
-
-    await queryRunner.createForeignKey(
-      'Order',
-      new TableForeignKey({
-        columnNames: ['items'],
-        referencedTableName: 'Item',
-        referencedColumnNames: ['id'],
       }),
     );
   }

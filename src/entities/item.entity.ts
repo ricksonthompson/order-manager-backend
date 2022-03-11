@@ -1,10 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  ManyToOne,
-  JoinColumn,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Order } from './order.entity';
 
 @Entity()
@@ -12,10 +6,10 @@ export class Item {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ length: 500 })
+  @Column()
   name: string;
 
-  @Column('text')
+  @Column()
   brand: string;
 
   @Column()
@@ -27,7 +21,9 @@ export class Item {
   @Column('float')
   price: number;
 
-  @ManyToOne((type) => Order, (order) => order.items, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'orderId' })
-  orders?: Order;
+  @ManyToOne(() => Order, (order) => order.items, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  order: Order;
 }

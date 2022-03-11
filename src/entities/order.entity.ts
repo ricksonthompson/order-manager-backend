@@ -9,6 +9,6 @@ export class Order {
   @Column()
   totalOrder: number;
 
-  @OneToMany((type) => Item, (item) => item.orders, { cascade: true })
+  @OneToMany(() => Item, (item) => item.order)
   items: Item[];
 }

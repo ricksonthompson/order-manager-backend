@@ -6,7 +6,7 @@ module.exports = {
   password: process.env.DATABASE_PASSWORD || 'Strong@Password123',
   database: '',
   entities: ['dist/**/*.entity{.ts,.js}'],
-  migrations: ['/src/config/database/migrations/*.ts'],
+  migrations: ['dist/config/database/migrations/*{.ts,.js}'],
   synchronize: false,
   cli: {
     migrationsDir: 'src/config/database/migrations',
